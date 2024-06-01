@@ -9,7 +9,8 @@ bool x(string input[100], int i, int k) {
     return true;
 }
 
-void sort(string arr[200][20], string input[100], int size) {
+void sort(string arr[200][200], string input[100], int size) {
+   int index2 = 0;
     for (int i = 0; i < size; i++) {
         int k = 0;
         while (!x(input, i, k)) {
@@ -17,11 +18,10 @@ void sort(string arr[200][20], string input[100], int size) {
         }
 
         char firstChar = tolower(input[i][k]);
-        int index2 = 0;
         for (int j = 97; j < 123; j++) {
             if (j == firstChar) {
-                arr[j][index2] = input[i];
-                index2++;
+               arr[j][index2] = input[i];
+               index2++;
             }
         }
     }
@@ -34,7 +34,7 @@ int main(){
    {
       getline(cin ,input[i]);
    }
-   string sort_shode[200][20];
+   string sort_shode[200][200];
    sort(sort_shode , input , size);
    for (int i = 97; i < 123 ; i++)
    {
@@ -48,6 +48,5 @@ int main(){
       }
       
    }
-   
    return 0;
 }
