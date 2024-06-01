@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <string.h>
-#include <random>
 using namespace std;
 bool x(string input[100], int i, int k) {
     while (input[i][k] == ' ' || input[i][k] == '_' || input[i][k] == '-' || input[i][k] == '!' || input[i][k] == '@' || input[i][k] == ')' || input[i][k] == '(' || input[i][k] == '%' || (input[i][k] < 58 && input[i][k] > 47)) {
