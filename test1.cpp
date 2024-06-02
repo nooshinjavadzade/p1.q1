@@ -1,46 +1,37 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
+
 using namespace std;
 
-void sort(string alephba[200], string input[], int size) {
-    int x = 0;
+void printStringsStartingWithUpperCase(const string strings[], int size) {
+    string upperCaseStrings[size];
+    int count = 0;
+
+    // پیدا کردن رشته‌هایی که حرف اول آن‌ها بزرگ است
     for (int i = 0; i < size; i++) {
-        int k = 0;
-        while (input[i][k] == ' ' || input[i][k] == 33 || input[i][k] == 37 || input[i][k] == 95 || input[i][k] == 45 || input[i][k] == 64 || input[i][k] == 41 || input[i][k] == 40 || (static_cast<int>(input[i][k]) > 47 && static_cast<int>(input[i][k]) < 58)) {
-            k++;
+        
+        if (!strings[i].empty() && islower(strings[i][0])) {
+            upperCaseStrings[count++] = strings[i];
         }
-        char letter = tolower(input[i][k]); // Convert the letter to lowercase
-        if (alephba[static_cast<int>(letter)].empty())
-        {
-            alephba[static_cast<int>(letter)] = input[i];
-        }
-        else
-        {
-            while (alephba[static_cast<int>(letter)].empty())
-            {
-                x++;
-            }
-            
-            alephba[static_cast<int>(letter)+x] = input[i];
-            
-        }
+    }
+
+    // مرتب‌سازی رشته‌ها بر اساس طولشان
+    sort(upperCaseStrings, upperCaseStrings + count, [](const string& a, const string& b) {
+        return a.size() < b.size();
+    });
+
+    // چاپ رشته‌های حرف اول آن‌ها بزرگ
+    for (int i = 0; i < count; i++) {
+        cout << upperCaseStrings[i] << endl;
     }
 }
 
 int main() {
-    string x[200];
-    string in[10];
-    for (int i = 0; i < 4; i++) {
-        cin >> in[i];
-    }
+    string strings[] = {"Hello", "appleeeeee", "baaanana", "world", "Car"};
+    int size = sizeof(strings) / sizeof(strings[0]);
 
-    sort(x, in, 4);
-
-    for (int i = 0; i < 200; i++) {
-        if (!x[i].empty()) {
-            cout << x[i] << endl;
-        }
-    }
+    printStringsStartingWithUpperCase(strings, 10);
 
     return 0;
 }
