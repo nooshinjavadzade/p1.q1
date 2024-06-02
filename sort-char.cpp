@@ -26,17 +26,18 @@ void sort(string arr[200][200], string input[100], int size) {
         }
     }
 }
-void chap_first(string alephba[200][200],int i,int k){
+void behine(string x[200][200],int i, int k , char y){
    int m = 0;
-   while (alephba[i][k][m]== ' ')
+   while (x[i][k][m]== ' ')
    {
       m++;
    }
-   if (alephba[i][k][m]== '_')
+   if (x[i][k][m]== y)
    {
-      cout<<alephba[i][k]<<endl;
+      cout<<x[i][k]<<endl;
    }
 }
+
 int main(){
    int size;
    string input[100];
@@ -53,12 +54,90 @@ int main(){
       {
          if (!sort_shode[i][j].empty())
          {
-            chap_first(sort_shode,i,j);
+            behine(sort_shode,i,j,'_');
+            
          }
          
       }
       
    }
-   
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,'-');
+            
+         }
+         
+      }
+      
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,'!');
+            
+         }
+         
+      }
+      
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,'@');
+            
+         }
+         
+      }
+      
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,')');
+            
+         }
+         
+      }
+      
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,'(');
+            
+         }
+         
+      }
+      
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      for (int j = 0; j < size+1; j++)
+      {
+         if (!sort_shode[i][j].empty())
+         {
+            behine(sort_shode,i,j,'%');
+            
+         }
+         
+      }
+      
+   }
    return 0;
 }
