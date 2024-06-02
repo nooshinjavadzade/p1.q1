@@ -4,35 +4,35 @@
 
 using namespace std;
 
-void printStringsStartingWithUpperCase(const string strings[], int size) {
-    string upperCaseStrings[size];
-    int count = 0;
-
-    // پیدا کردن رشته‌هایی که حرف اول آن‌ها بزرگ است
-    for (int i = 0; i < size; i++) {
-        
-        if (!strings[i].empty() && islower(strings[i][0])) {
-            upperCaseStrings[count++] = strings[i];
-        }
+int main() {
+    int n;
+    cin >> n;
+    
+    cin.ignore(); // پاک کردن بوفر ورودی
+    
+    string arr[n];
+    
+    // دریافت و ذخیره رشته‌ها
+    for(int i = 0; i < n; ++i){
+        getline(cin, arr[i]);
     }
-
-    // مرتب‌سازی رشته‌ها بر اساس طولشان
-    sort(upperCaseStrings, upperCaseStrings + count, [](const string& a, const string& b) {
+    
+    // مرتب کردن رشته‌ها بر اساس طول آن‌ها
+    sort(arr, arr + n, [](const string& a, const string& b){
         return a.size() < b.size();
     });
-
-    // چاپ رشته‌های حرف اول آن‌ها بزرگ
-    for (int i = 0; i < count; i++) {
-        cout << upperCaseStrings[i] << endl;
+    
+    // چاپ رشته‌ها بر اساس ترتیب طولشان بدون در نظر گرفتن فاصله‌ها
+    for(int i = 0; i < n; ++i){
+        string trimmedString = "";
+        for(int j=0; j<arr[i].size();j++){  //char ch : arr[i]
+            if(arr[i][j] != ' ') {              //ch != ' '
+                trimmedString += arr[i][j];   //+= ch
+            }
+        }
+        cout << trimmedString << endl;
     }
-}
-
-int main() {
-    string strings[] = {"Hello", "appleeeeee", "baaanana", "world", "Car"};
-    int size = sizeof(strings) / sizeof(strings[0]);
-
-    printStringsStartingWithUpperCase(strings, 10);
-
+    
     return 0;
 }
 
