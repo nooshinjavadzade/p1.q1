@@ -26,27 +26,39 @@ void sort(string arr[200][200], string input[100], int size) {
         }
     }
 }
+void chap_first(string alephba[200][200],int k,int i){
+   int m = 0;
+   while (alephba[i][k][m]== ' ')
+   {
+      m++;
+   }
+   if (alephba[i][k][m]== '_')
+   {
+      cout<<alephba[i][k]<<endl;
+   }
+}
 int main(){
    int size;
    string input[100];
-   scanf("%d\n",&size);
-   for (int i = 0; i < size; i++)
+   scanf("%d",&size);
+   for (int i = 0; i < size+1; i++)
    {
       getline(cin ,input[i]);
    }
    string sort_shode[200][200];
-   sort(sort_shode , input , size);
-   for (int i = 97; i < 123 ; i++)
+   sort(sort_shode , input , size+1);
+   for (int i = 97; i < 123; i++)
    {
-      for (int j = 0; j < 20; j++)
+      for (int j = 0; j < size+1; j++)
       {
          if (!sort_shode[i][j].empty())
          {
-            cout << sort_shode[i][j]<<endl;
+            chap_first(sort_shode,j,i);
          }
          
       }
       
    }
+   
    return 0;
 }
