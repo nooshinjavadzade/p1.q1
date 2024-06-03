@@ -37,7 +37,68 @@ void behine(string x[200][200],int i, int k , char y){
       cout<<x[i][k]<<endl;
    }
 }
-
+struct str {
+    string x;
+    int length;
+};
+void length_sort1(string sorted[100], string in[200][200],int k) {
+    str reshte[10];
+    for (int i = 0; i < 10; i++) {
+        if (!in[k][i].empty()) {
+            reshte[i].x = in[k][i];
+            int count = 0;
+            for (int j = 0; j < reshte[i].x.length(); j++) {
+                if (reshte[i].x[j] == ' ') {
+                    count++;
+                }
+            }
+            reshte[i].length = reshte[i].x.length() - count;
+        }
+    }
+    int index = 0;
+    for (int i = 1; i <= 20; i++) {
+        for (int m = 0; m < 10; m++) {
+            int s =0;
+            while (reshte[m].x[s]==' ')
+            {
+                s++;
+            }
+            if (!reshte[m].x.empty() && reshte[m].length == i && isupper(reshte[m].x[s])) {
+                sorted[index] = reshte[m].x;
+                index++;
+            }
+        }
+    }
+}
+void length_sort2(string sorted[100], string in[200][200],int k) {
+    str reshte[10];
+    for (int i = 0; i < 10; i++) {
+        if (!in[k][i].empty()) {
+            reshte[i].x = in[k][i];
+            int count = 0;
+            for (int j = 0; j < reshte[i].x.length(); j++) {
+                if (reshte[i].x[j] == ' ') {
+                    count++;
+                }
+            }
+            reshte[i].length = reshte[i].x.length() - count;
+        }
+    }
+    int index = 0;
+    for (int i = 1; i <= 20; i++) {
+        for (int m = 0; m < 10; m++) {
+            int s =0;
+            while (reshte[m].x[s]==' ')
+            {
+                s++;
+            }
+            if (!reshte[m].x.empty() && reshte[m].length == i && islower(reshte[m].x[s])) {
+                sorted[index] = reshte[m].x;
+                index++;
+            }
+        }
+    }
+}
 int main(){
    int size;
    string input[100];
@@ -139,5 +200,30 @@ int main(){
       }
       
    }
+   for (int i = 97; i < 123; i++)
+   {
+      string captal_sort[50];
+      length_sort1(captal_sort,sort_shode,i);
+      for (int m = 0; m < size; m++) {
+        if (!captal_sort[m].empty()) {
+            cout << captal_sort[m] << endl;
+        }
+    }
+   }
+   for (int i = 97; i < 123; i++)
+   {
+      string small_sort[50];
+      length_sort2(small_sort , sort_shode , i);
+      for (int j = 0; j < size; j++)
+      {
+         if (!small_sort[j].empty())
+         {
+            cout << small_sort[j]<<endl;
+         }
+         
+      }
+   }
+   
+   
    return 0;
 }
